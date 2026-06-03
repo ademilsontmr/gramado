@@ -12,6 +12,7 @@ import {
 } from "@/components/blog-content";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { DomainHero } from "@/components/domain-hero";
+import { RelatedPremiumDomainsSection } from "@/components/related-premium-domains";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { getBlogPost, getRelatedPosts } from "@/lib/blog-posts";
 import { getBlogPostHeadMeta } from "@/lib/seo";
@@ -118,6 +119,7 @@ function BlogPostPage() {
           </a>
         </section>
       </main>
+      <RelatedPremiumDomainsSection />
       <SiteFooter />
     </div>
   );

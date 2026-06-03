@@ -2,6 +2,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { RelatedPremiumDomainsSection } from "@/components/related-premium-domains";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { getSortedBlogPosts } from "@/lib/blog-posts";
 import { getBlogIndexHeadMeta } from "@/lib/seo";
@@ -99,6 +100,7 @@ function BlogIndexPage() {
           </a>
         </aside>
       </main>
+      <RelatedPremiumDomainsSection />
       <SiteFooter />
     </div>
   );
