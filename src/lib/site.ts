@@ -13,6 +13,34 @@ export const DOMAIN = "cassinodegramado.com.br";
 /** Domínio à venda */
 export const DOMAINS_FOR_SALE = ["cassinodegramado.com.br"] as const;
 
+/** Sites irmãos do portfólio premium (cross-link) */
+export const OTHER_PREMIUM_DOMAINS = [
+  { url: "https://cassinodegramado.com.br/", label: "cassinodegramado.com.br" },
+  { url: "https://cassinocamposdojordao.com.br/", label: "cassinocamposdojordao.com.br" },
+  { url: "https://cassinocopacabana.com/", label: "cassinocopacabana.com" },
+  { url: "https://cassinodesaopaulo.com.br/", label: "cassinodesaopaulo.com.br" },
+  { url: "https://cassinodebrasilia.com.br/", label: "cassinodebrasilia.com.br" },
+  { url: "https://cassinodesalinas.com.br/", label: "cassinodesalinas.com.br" },
+  { url: "https://cassinobh.com.br/", label: "cassinobh.com.br" },
+  { url: "https://cassinoportoalegre.com/", label: "cassinoportoalegre.com" },
+] as const;
+
+function normalizeHostname(host: string): string {
+  return host.replace(/^www\./i, "").toLowerCase();
+}
+
+/** Domínios irmãos, excluindo o site atual */
+export function getOtherPremiumDomains() {
+  const currentHosts = new Set(
+    [DOMAIN, ...DOMAINS_FOR_SALE, new URL(SITE_URL).hostname].map(normalizeHostname),
+  );
+
+  return OTHER_PREMIUM_DOMAINS.filter(({ label, url }) => {
+    const hosts = [label, new URL(url).hostname].map(normalizeHostname);
+    return !hosts.some((host) => currentHosts.has(host));
+  });
+}
+
 /** Lista em português: "a, b e c" */
 export function formatDomainsListPt(
   domains: readonly string[] = DOMAINS_FOR_SALE,
