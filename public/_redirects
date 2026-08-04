@@ -1,1 +1,2 @@
-# Fallback para SPA/SSR — o worker em dist/_worker.js trata as rotas dinâmicas
+# Site estático — HTML pré-renderizado no build (scripts/prerender-static.mjs).
+# Sem Worker: páginas servidas direto do CDN da Cloudflare Pages.
