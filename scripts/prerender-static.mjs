@@ -65,6 +65,11 @@ async function main() {
     "utf8",
   );
 
+  // Nitro gera .wrangler/deploy/config.json apontando para dist/_worker.js/wrangler.json.
+  // Sem Worker, isso quebra o deploy no Cloudflare Pages.
+  rmSync(join(root, ".wrangler"), { recursive: true, force: true });
+  console.log("Removido .wrangler/ (config de Worker obsoleta).");
+
   console.log(`Pré-render concluído: ${paths.length} páginas em dist/`);
 }
 

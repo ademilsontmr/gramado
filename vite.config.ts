@@ -10,7 +10,8 @@ export default defineConfig({
   nitro: {
     compatibilityDate: "2024-09-19",
     preset: "cloudflare_pages",
-    cloudflare: { nodeCompat: true, deployConfig: true },
+    // deployConfig: false — site estático pós-build; evita .wrangler apontando para _worker.js removido
+    cloudflare: { nodeCompat: true, deployConfig: false },
   },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
